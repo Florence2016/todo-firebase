@@ -1,0 +1,40 @@
+<header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title visible-desktop">AngularDart notes board</span>
+        <span class="mdl-layout-title visible-mobile">Dart NB</span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+
+
+            <template [ngIf]="hideCode">
+                    <input type="password" #secureCode/>
+
+                    <material-button  class="red"
+                                      raised
+                                      (click)="secures(secureCode.value); secureCode.value=''">
+                        <material-icon icon="verified_user"></material-icon>
+                        Verify
+                    </material-button>
+                <p class="error" *ngIf="errorMessage != null">{{errorMessage}}</p>
+            </template>
+                <div>
+                    <ul>
+                        <li id="profile" *ngIf="service.user != null">
+                            <img [src]="service.user.photoURL" width="40" height="40">
+                            <p>{{service.user.displayName}} ({{service.user.email}})</p>
+                            <a (click)="service.signOut()">Sign out</a>
+                        </li>
+
+                        <template [ngIf]="secure">
+                        <li id="login" *ngIf="service.user == null">
+                            <a class="mdl-button mdl-button--raised mdl-button--accent"
+                               (click)="service.signInWithGoogle()">
+                                Sign in with Google
+                            </a>
+                        </li>
+                        </template>
+                    </ul>
+                </div>
+        </nav>
+    </div>
+</header>

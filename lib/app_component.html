@@ -1,0 +1,13 @@
+<div class="mdl-layout mdl-layout--fixed-header">
+    <layout-header></layout-header>
+
+    <main class="mdl-layout__content">
+        <div *ngIf="service.loading" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+
+        <div id="container">
+            <new-note></new-note>
+            <notes></notes>
+        </div>
+        <layout-footer></layout-footer>
+    </main>
+</div>
